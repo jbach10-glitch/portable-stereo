@@ -7,6 +7,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -46,7 +47,10 @@ public class StereoItem extends Item {
             }
             StereoPlayback.stop(serverPlayer);
             stereo.remove(ModItems.LOADED_DISC);
-                        player.getInventory().placeItemBackInInventory(loaded);
+            if (!player.getInventory().add(loaded)) {
+                // Inventory full: drop the disc at the player's feet
+                level.addFreshEntity(new ItemEntity(level, player.getX(), player.getY(), player.getZ(), loaded));
+            }
             tell(serverPlayer, Component.translatable("message.portable_stereo.ejected"));
             return InteractionResult.SUCCESS;
         }
