@@ -32,7 +32,7 @@ public final class StereoPlayback {
     }
 
     public static boolean start(ServerPlayer player, ItemStack disc) {
-        Optional<Holder<JukeboxSong>> song = JukeboxSong.fromStack(player.registryAccess(), disc);
+        Optional<Holder<JukeboxSong>> song = JukeboxSong.fromStack(disc)
         if (song.isEmpty()) {
             return false;
         }
