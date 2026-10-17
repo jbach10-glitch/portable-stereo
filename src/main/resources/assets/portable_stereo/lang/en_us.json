@@ -1,0 +1,7 @@
+{
+  "item.portable_stereo.portable_stereo": "Portable Stereo",
+  "message.portable_stereo.now_playing": "Now playing: %s",
+  "message.portable_stereo.stopped": "Stereo stopped",
+  "message.portable_stereo.ejected": "Disc ejected",
+  "message.portable_stereo.no_disc": "Hold a music disc in your other hand to load it"
+}

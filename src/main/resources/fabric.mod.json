@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "portable_stereo",
+  "version": "${version}",
+  "name": "Portable Stereo",
+  "description": "A carry-anywhere boombox. Load a music disc and everyone near you hears it, and the music follows you as you walk.",
+  "authors": ["Joe"],
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["dev.portablestereo.PortableStereo"],
+    "client": ["dev.portablestereo.client.PortableStereoClient"]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "minecraft": "~26.3",
+    "java": ">=25",
+    "fabric-api": "*"
+  }
+}
