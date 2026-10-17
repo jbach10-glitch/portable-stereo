@@ -1,8 +1,6 @@
 package dev.portablestereo;
 
-import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -25,8 +23,8 @@ public class StereoItem extends Item {
     }
 
     public static ItemStack getDisc(ItemStack stereo) {
-        Holder<Item> disc = stereo.get(ModItems.LOADED_DISC);
-        return disc == null ? ItemStack.EMPTY : new ItemStack(disc);
+        LoadedDisc disc = stereo.get(ModItems.LOADED_DISC);
+        return disc == null ? ItemStack.EMPTY : disc.toStack();
     }
 
     @Override
@@ -59,7 +57,7 @@ public class StereoItem extends Item {
         if (loaded.isEmpty()) {
             if (!other.isEmpty() && other.has(DataComponents.JUKEBOX_PLAYABLE)) {
                 ItemStack disc = other.copyWithCount(1);
-                stereo.set(ModItems.LOADED_DISC, BuiltInRegistries.ITEM.wrapAsHolder(other.getItem()));
+                stereo.set(ModItems.LOADED_DISC, LoadedDisc.of(other));
                 if (!player.hasInfiniteMaterials()) {
                     other.shrink(1);
                 }
