@@ -46,9 +46,7 @@ public class StereoItem extends Item {
             }
             StereoPlayback.stop(serverPlayer);
             stereo.remove(ModItems.LOADED_DISC);
-            if (!player.getInventory().add(loaded)) {
-                player.drop(loaded, false);
-            }
+                        player.getInventory().placeItemBackInInventory(loaded);
             tell(serverPlayer, Component.translatable("message.portable_stereo.ejected"));
             return InteractionResult.SUCCESS;
         }
